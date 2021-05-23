@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {AccountManagerAPIService} from "./services/rest/account-manager/account-manager-api.service";
+import {AccountManagerStatistics} from "./models/AccountManagerStatistics";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'seller-insights-web';
+
+  accountManagerInfo: AccountManagerStatistics;
+
+  constructor(
+    public accountManagerAPI: AccountManagerAPIService
+  ) {
+  }
+
+  onSearchQueryChanged($event: string) {
+    this.accountManagerAPI.getAccountManagerDataByName($event)
+      .subscribe((response: AccountManagerStatistics) => {
+        this.accountManagerInfo = response;
+      });
+  }
 }

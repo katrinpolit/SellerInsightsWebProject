@@ -1,0 +1,14 @@
+<div class="items-table-component">
+    <table>
+      <tr>
+        <th class="epid-column">Epid</th>
+        <th class="item-param-column">contextAsSite</th>
+        <th class="item-param-column">contextAsSeller</th>
+      </tr>
+      <tr *ngFor="let item of _itemList">
+        <td>{{item.epid}}</td>
+        <td>{{item.contextAsSite}}</td>
+        <td>{{item.contextAsSeller}}</td>
+      </tr>
+    </table>
+</div>
